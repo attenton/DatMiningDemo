@@ -5,6 +5,7 @@
 
 <script>
 import G2 from '@antv/g2'
+import DataSet from '@antv/data-set'
 
 export default {
   name: 'energy',
@@ -18,26 +19,7 @@ export default {
       type: Array,
       default: function () {
         return {
-          data: [{
-            'vehicle': '1',
-            'energy': 1.312497623
-          },
-          {
-            'vehicle': '2',
-            'energy': 0.008526807
-          },
-          {
-            'vehicle': '3',
-            'energy': 0.307542662
-          },
-          {
-            'vehicle': '4',
-            'energy': 0.012967101
-          },
-          {
-            'vehicle': '5',
-            'energy': 0.015034389
-          }]
+          data: []
         }
       }
     },
@@ -53,28 +35,40 @@ export default {
     this.drawChart()
   },
   methods: {
-    drawChart (dataes) {
+    drawChart () {
       this.chart && this.chart.destroy()
-      let data = dataes
       this.chart = new G2.Chart({
-        id: this.id,
-        width: 1000,
+        container: this.id,
+        width: 600,
         height: 250
       })
-      this.chart.source(data)
-      this.chart.scale('energy', {
-        min: 0
+      let ds = new DataSet()
+      let dv = ds.createView().source(this.chartData)
+      dv.transform({
+        type: 'fold',
+        fields: ['predict_energy', 'actual_energy'],
+        key: 'energy',
+        value: 'energy_value'
       })
-      this.chart.scale('vehicle', {
-        range: [0, 1]
+      this.chart.source(dv, {
+        'vehicle': {
+          range: [0, 1]
+        }
       })
+      // this.chart.axis('energy_value', {
+      //   label: {
+      //     formatter: function formatter (val) {
+      //       return val
+      //     }
+      //   }
+      // })
       this.chart.tooltip({
         crosshairs: {
           type: 'line'
         }
       })
-      this.chart.line().position('vehicle*energy')
-      this.chart.point().position('vehicle*energy').size(4).shape('circle').style({
+      this.chart.line().position('vehicle*energy_value').color('energy').shape('smooth')
+      this.chart.point().position('vehicle*energy_value').color('energy').size(4).shape('circle').style({
         stroke: '#fff',
         lineWidth: 1
       })

@@ -15,34 +15,7 @@ export default {
       type: Array,
       default: function () {
         return {
-          data: [{
-            year: '1991',
-            value: 3
-          }, {
-            year: '1992',
-            value: 4
-          }, {
-            year: '1993',
-            value: 3.5
-          }, {
-            year: '1994',
-            value: 5
-          }, {
-            year: '1995',
-            value: 4.9
-          }, {
-            year: '1996',
-            value: 6
-          }, {
-            year: '1997',
-            value: 7
-          }, {
-            year: '1998',
-            value: 9
-          }, {
-            year: '1999',
-            value: 13
-          }]
+          data: []
         }
       }
     },
@@ -59,14 +32,14 @@ export default {
     }
   },
   methods: {
-    drawChart: function (datas) {
+    drawChart: function () {
       this.chart && this.chart.destory()
       this.chart = new G2.Chart({
         container: this.id,
         width: 600,
         height: 300
       })
-      this.chart.source(datas)
+      this.chart.source(this.charData)
       this.chart.scale('value', {
         min: 0
       })
