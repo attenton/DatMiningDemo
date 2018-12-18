@@ -39,32 +39,36 @@ export default {
       this.chart && this.chart.destroy()
       this.chart = new G2.Chart({
         container: this.id,
-        width: 600,
-        height: 300
+        width: 700,
+        height: 400
       })
       let ds = new DataSet()
       let dv = ds.createView().source(this.chartData)
       dv.transform({
         type: 'fold',
-        fields: ['max', 'min'],
+        fields: ['max_temperature', 'min_temperature'],
         key: 'Max_Min',
         value: 'temperature'
       })
-      this.chart.source(dv, {
-        'vehicle': {
-          range: [0, 1]
+      this.chart.source(dv)
+      this.chart.axis('temperature', {
+        label: {
+          formatter: function formatter (val) {
+            return val + '°C'
+          }
         }
       })
-      this.chart.tooltip({
-        crosshairs: {
-          type: 'line'
-        }
-      })
-      this.chart.line().position('vehicle*temperature').color('Max_Min').shape('smooth')
-      this.chart.point().position('vehicle*temperature').color('Max_Min').size(4).shape('circle').style({
-        stroke: '#fff',
-        lineWidth: 1
-      })
+      // this.chart.tooltip({
+      //   crosshairs: {
+      //     type: 'line'
+      //   }
+      // })
+      this.chart.interval().position('time*temperature').color('Max_Min', ['#4FAAEB', '#db4c3c'])
+      // this.chart.line().position('time*temperature').color('Max_Min').shape('smooth')
+      // this.chart.point().position('time*temperature').color('Max_Min').size(4).shape('circle').style({
+      //   stroke: '#fff',
+      //   lineWidth: 1
+      // })
       this.chart.render()
     }
   }

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <energy :chartData="energyData" :id="'c1'"></energy>
-    <G2Line :charData="serverData" :id="'c2'"></G2Line>
-    <temperature :chartData="temperatureData" :id="'c3'"></temperature>
-    <mileage :chartData="mileageData" :id="'c3'"></mileage>
+    <energy class="chart" :chartData="energyData" :id="'c1'"></energy>
+    <temperature class="chart" :chartData="temperatureData" :id="'c3'"></temperature>
+    <mileage class="chart" :chartData="mileageData" :id="'c4'"></mileage>
+    <voltage_current class="chart" :chartData="voltage_currentData" :id="'c5'"></voltage_current>
   </div>
 </template>
 
@@ -19,89 +19,127 @@ export default {
   },
   data () {
     return {
-      energyData: [{
-        'vehicle': '1',
-        'predict_energy': 0.012497623,
-        'actual_energy': 0.047443
-      },
-      {
-        'vehicle': '2',
-        'predict_energy': 0.008526807,
-        'actual_energy': 0.07567443
-      },
-      {
-        'vehicle': '3',
-        'predict_energy': 0.307542662,
-        'actual_energy': 0.07863443
-      },
-      {
-        'vehicle': '4',
-        'predict_energy': 0.012967101,
-        'actual_energy': 0.0234443
-      },
-      {
-        'vehicle': '5',
-        'predict_energy': 0.015034389,
-        'actual_energy': 0.03423443
-      }],
-      serverData: [{
-        year: '2010',
-        value: 3
-      }, {
-        year: '2011',
-        value: 4
-      }, {
-        year: '2012',
-        value: 3.5
-      }, {
-        year: '2013',
-        value: 5
-      }, {
-        year: '2014',
-        value: 4.9
-      }, {
-        year: '2015',
-        value: 6
-      }, {
-        year: '2016',
-        value: 7
-      }, {
-        year: '2017',
-        value: 9
-      }, {
-        year: '2018',
-        value: 13
-      }],
-      temperatureData:[
+      energyData: [
         {
-          vehicle: '1',
-          max: 24,
-          min: 12
+          'time': '2015/12/12/12:13-2015/12/12/13:13',
+          start_soc: 10,
+          end_soc: 20,
+          predict_energy: 0.08526807,
+          actual_energy: 0.07567443
         },
         {
-          vehicle: '2',
-          max: 20,
-          min: 9
+          'time': '2015/12/12/14:13-2015/12/12/15:13',
+          start_soc: 20,
+          end_soc: 30,
+          predict_energy: 0.012967101,
+          actual_energy: 0.0234443
         },
         {
-          vehicle: '3',
-          max: 27,
-          min: 10
+          'time': '2015/12/12/15:17-2015/12/12/15:19',
+          start_soc: 10,
+          end_soc: 40,
+          predict_energy: 0.015034389,
+          actual_energy: 0.03423443
         },
         {
-          vehicle: '4',
-          max: 33,
-          min: 24
+          'time': '2015/12/12/16:13-2015/12/12/17:13',
+          start_soc: 10,
+          end_soc: 45,
+          predict_energy: 0.012497623,
+          actual_energy: 0.047443
         },
         {
-          vehicle: '5',
-          max: 10,
-          min: -2
+          'time': '2015/12/12/18:13-2015/12/12/19:13',
+          start_soc: 10,
+          end_soc: 35,
+          predict_energy: 0.0607542662,
+          actual_energy: 0.07863443
+        }
+      ],
+      temperatureData: [
+        {
+          'time': '2015/12/12/12:13-2015/12/12/13:13',
+          max_temperature: 34,
+          min_temperature: 12
+        },
+        {
+          'time': '2015/12/12/14:13-2015/12/12/15:13',
+          max_temperature: 20,
+          min_temperature: 9
+        },
+        {
+          'time': '2015/12/12/15:17-2015/12/12/15:19',
+          max_temperature: 27,
+          min_temperature: 10
+        },
+        {
+          'time': '2015/12/12/16:13-2015/12/12/17:13',
+          max_temperature: 33,
+          min_temperature: 24
+        },
+        {
+          'time': '2015/12/12/18:13-2015/12/12/19:13',
+          max_temperature: 10,
+          min_temperature: -2
         }
       ],
       mileageData: [
         {
-
+          'time': '2015-12-12 13:13',
+          mileage: 12
+        },
+        {
+          'time': '2015-12-12 14:13',
+          mileage: 15
+        },
+        {
+          'time': '2015-12-12 15:13',
+          mileage: 20
+        },
+        {
+          'time': '2015-12-12 16:13',
+          mileage: 29
+        },
+        {
+          'time': '2015-12-12 19:13',
+          mileage: 40
+        }
+      ],
+      voltage_currentData: [
+        {
+          time: '2015-12-12 13:13',
+          start_voltage: 34,
+          end_voltage: 38,
+          start_current: 12,
+          end_current: 6
+        },
+        {
+          time: '2015-12-12 14:13',
+          start_voltage: 12,
+          end_voltage: 34,
+          start_current: 45,
+          end_current: 34
+        },
+        {
+          time: '2015-12-12 15:13',
+          start_voltage: 12,
+          end_voltage: 23,
+          start_current: 18,
+          end_current: 10
+        },
+        {
+          time: '2015-12-12 16:13',
+          start_voltage: 4,
+          end_voltage: 15,
+          start_current: 22,
+          end_current: 6
+        },
+        {
+          time: '2015-12-12 19:43',
+          start_voltage: 2,
+          end_voltage: 33,
+          start_current: 2,
+          end_current: 26
         }
       ]
     }
@@ -123,5 +161,8 @@ export default {
   margin-top: 60px;
   width: 100%;
   height: 100%;
+}
+.chart{
+  float: left;
 }
 </style>
