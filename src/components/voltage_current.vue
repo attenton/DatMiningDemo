@@ -35,8 +35,8 @@ export default {
     this.drawChart()
   },
   methods: {
-    pick(data, field) {
-      return data.map(function(item) {
+    pick (data, field) {
+      return data.map(function (item) {
         var result = {}
         for (var key in item) {
           if (item.hasOwnProperty(key) && field.indexOf(key) !== -1) {
@@ -68,10 +68,6 @@ export default {
         value: 'value'
       })
       view1.source(dv, {
-        'time': {
-          type: 'timeCat',
-          mask: 'YYYY-MM-DD HH:mm'
-        },
         'start_voltage': {
           alias: '起始电压'
         },
@@ -112,8 +108,8 @@ export default {
         value: 'currentvalue'
       })
       view2.source(dv2)
-      view2.coord().reflect()
-      view2.interval().position('time*currentvalue').color('current', ['#db4c3c', '#fec514']).size(30)
+      view2.coord().reflect().reflect('x')
+      view2.interval().position('time*currentvalue').color('current', ['#db4c3c', '#fec514'])
       // view2.point().position('time*currentvalue').color('current', ['#db4c3c', '#fec514']).size(4).shape('circle').style({
       //   stroke: '#fff',
       //   lineWidth: 1

@@ -40,7 +40,7 @@ export default {
       this.chart = new G2.Chart({
         container: this.id,
         width: 700,
-        height: 400
+        height: 450
       })
       let ds = new DataSet()
       let dv = ds.createView().source(this.chartData)

@@ -62,7 +62,7 @@ export default {
       this.chart = new G2.Chart({
         container: this.id,
         width: 700,
-        height: 400
+        height: 450
       })
       this.chart.source(this.chartData)
       const Util = G2.Util
@@ -141,12 +141,12 @@ export default {
       this.chart.interval().position('time*mileage').tooltip('time*mileage', (time, mileage) => {
         if (Util.isArray(mileage)) {
           return {
-            name: 'delt_mileage',
+            name: '里程增量',
             value: mileage[1] - mileage[0]
           }
         }
         return {
-          name: 'delt_mileage',
+          name: '里程增量',
           value: mileage
         }
       }).shape('waterfall')

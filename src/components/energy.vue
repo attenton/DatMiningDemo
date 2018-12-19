@@ -90,6 +90,9 @@ export default {
         key: 'energy',
         value: 'energy_value'
       })
+      view1.axis('time', {
+        label: null
+      })
       view1.source(dv, scale)
       this.chart.tooltip({
         crosshairs: {
