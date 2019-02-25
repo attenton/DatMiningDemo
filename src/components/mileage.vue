@@ -134,10 +134,10 @@ export default {
           }
         }]
       })
-      this.chart.scale('time', {
-        type: 'timeCat',
-        mask: 'YYYY-MM-DD HH:mm'
-      })
+      // this.chart.scale('time', {
+      //   type: 'timeCat',
+      //   mask: 'YYYY-MM-DD HH:mm'
+      // })
       this.chart.interval().position('time*mileage').tooltip('time*mileage', (time, mileage) => {
         if (Util.isArray(mileage)) {
           return {

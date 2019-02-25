@@ -51,7 +51,7 @@ export default {
       this.chart = new G2.Chart({
         container: this.id,
         width: 700,
-        height: 400
+        height: 450
       })
       this.chart.scale({
         time: {

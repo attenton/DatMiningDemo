@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     pick (data, field) {
-      return data.map(function(item) {
+      return data.map(function (item) {
         var result = {}
         for (var key in item) {
           if (item.hasOwnProperty(key) && field.indexOf(key) !== -1) {
@@ -51,7 +51,7 @@ export default {
       this.chart = new G2.Chart({
         container: this.id,
         width: 700,
-        height: 400,
+        height: 450,
         sync: false
       })
       let scale = {
@@ -68,9 +68,9 @@ export default {
           alias: 'end_soc'
         }
       }
-      this.chart.axis('time', {
-        grid: null
-      })
+      // this.chart.axis('time', {
+      //   grid: null
+      // })
       let view2 = this.chart.view()
       let ds2 = new DataSet()
       let dv2 = ds2.createView().source(this.chartData)
@@ -90,9 +90,9 @@ export default {
         key: 'energy',
         value: 'energy_value'
       })
-      view1.axis('time', {
-        label: null
-      })
+      // view1.axis('time', {
+      //   label: null
+      // })
       view1.source(dv, scale)
       this.chart.tooltip({
         crosshairs: {

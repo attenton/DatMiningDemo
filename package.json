@@ -17,6 +17,7 @@
     "@antv/data-set": "^0.10.1",
     "@antv/g2": "^3.4.5",
     "axios": "^0.18.0",
+    "element-ui": "^2.4.11",
     "viser-vue": "^2.4.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"

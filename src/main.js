@@ -8,6 +8,8 @@ import mileage from './components/mileage'
 import voltageCurrent from './components/voltage_current'
 import G2Line from './components/G2Line'
 import router from './router'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
 
@@ -16,6 +18,8 @@ Vue.component('temperature', temperature)
 Vue.component('mileage', mileage)
 Vue.component('voltage_current', voltageCurrent)
 Vue.component('G2Line', G2Line)
+Vue.use(ElementUI)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
